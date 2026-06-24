@@ -7,17 +7,17 @@
   </head>
 
   <body>
-    <!-- Header Bereich -->
+    <!-- # Header Bereich -->
     <header>
       <h1>Tritt unserer Coding School bei</h1>
       <p>Fülle das Formular unten aus, um deine Programmier-Reise zu beginnen!</p>
     </header>
 
-    <!-- Hauptinhalt -->
+    <!-- # Hauptinhalt -->
     <main>
       <section>
         <form action="#" method="get" autocomplete="on">
-          <!-- Persönliche Informationen Fieldset -->
+          <!-- * Persönliche Informationen Fieldset -->
           <fieldset>
             <legend>Persönliche Informationen</legend>
 
@@ -32,6 +32,8 @@
                 required
                 autocomplete="given-name"
               />
+              <!-- ! Optisch wirken Platzhalter manchmal wie ein Ersatz für Labels, aber für Barrierefreiheit müssen Labels erhalten bleiben -->
+              <!-- ! Später können Labels bei Bedarf mit CSS visuell ausgeblendet werden -->
             </div>
 
             <!-- Nachname Feld -->
@@ -58,6 +60,7 @@
                 required
                 autocomplete="email"
               />
+              <!-- ! E-Mail-Felder werden mit type="email" automatisch validiert -->
             </div>
 
             <!-- Telefon-Feld mit Pattern und Autocomplete -->
@@ -76,7 +79,7 @@
             </div>
           </fieldset>
 
-          <!-- Adress-Informationen Fieldset -->
+          <!-- * Adress-Informationen Fieldset -->
           <fieldset>
             <legend>Adress-Informationen</legend>
 
@@ -104,7 +107,15 @@
                 autocomplete="postal-code"
               />
               <small>5-stellige Postleitzahl</small>
+              <!-- ! Reguläre Ausdrücke für die Validierung
+               ! Werden erst beim Absenden des Formulars geprüft, nicht während der Eingabe!
+               [0-9] = eine beliebige Ziffer von 0 bis 9
+               {5} = genau 5 Ziffern
+               Du kannst nach "regex phone number" suchen, um Beispiele für Telefonnummern zu finden -->
             </div>
+            <!-- ! pattern: Diese Angaben begrenzen nicht, was Benutzer in ein Eingabefeld eintippen können;
+              sie werden erst geprüft, wenn auf den Absende-Button geklickt wird.
+              Die pattern-Validierung passiert also *nur beim Absenden*. -->
 
             <div>
               <label for="city">Stadt:</label><br />
@@ -118,7 +129,7 @@
             </div>
           </fieldset>
 
-          <!-- Kurs-Informationen Fieldset -->
+          <!-- * Kurs-Informationen Fieldset -->
           <fieldset>
             <legend>Kurs-Informationen</legend>
 
@@ -145,7 +156,7 @@
             </div>
           </fieldset>
 
-          <!-- Codeeditor-Präferenz Fieldset mit Radio-Buttons -->
+          <!-- * Codeeditor-Präferenz Fieldset mit Radio-Buttons -->
           <fieldset>
             <legend>Codeeditor-Präferenz</legend>
             <p>Welchen Codeeditor nutzt du am liebsten? Wähle eine Option:</p>
@@ -166,7 +177,12 @@
             </div>
           </fieldset>
 
-          <!-- AGB Checkbox -->
+          <!-- * AGB Checkbox -->
+
+          <!-- ! Label-Trick: Du kannst die Checkbox in das label-Element einwickeln,
+               um id- und for-Attribute überflüssig zu machen.
+               Das eignet sich sehr gut für einfache Wahr/Falsch-Eingaben.
+               Kein `value`-Attribut nötig, weil die Anwesenheit bzw. Abwesenheit der Checkbox beim Absenden ausreicht. -->
           <div>
             <label>
               <input type="checkbox" name="terms" required />
@@ -175,7 +191,9 @@
             </label>
           </div>
 
-          <!-- Formular-Absende-Buttons -->
+          <!-- * Formular-Absende-Buttons -->
+          <!-- ! Buttons haben standardmäßig type="submit".
+               Du kannst auch type="reset" verwenden, um das Formular zu leeren. -->
           <div>
             <button type="submit">Bewerbung absenden</button>
             <button type="reset">Formular löschen</button>
@@ -184,7 +202,7 @@
       </section>
     </main>
 
-    <!-- Footer -->
+    <!-- # Footer -->
     <footer>
       <p>© 2026 Coding School. Alle Rechte vorbehalten.</p>
     </footer>
