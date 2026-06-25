@@ -1,0 +1,59 @@
+/* (0, 0, 1) */
+p {
+  background-color: blueviolet;
+}
+
+/* (0, 0, 1) */
+a {
+  text-decoration: line-through;
+}
+
+/* (0, 0, 2) */
+h1 ~ p {
+  margin-block-start: 0;
+  color: white;
+}
+
+/* (0, 0, 2) */
+/* nav a {
+        text-decoration: none;
+      } */
+
+/* (0, 0, 2) */
+/* ul > li {
+        list-style: circle;
+      } */
+
+/* (0, 0, 2) */
+p::first-letter {
+  font-size: 32px;
+}
+
+/* (0, 1, 0) */
+.my-class {
+  background-color: chocolate;
+}
+
+/* (0, 1, 0) */
+.my-class {
+  background-color: yellow;
+}
+
+/* (0, 1, 0) */
+.nav-link {
+  text-decoration: none;
+}
+
+/* nav ul:first-of-type a {
+        text-decoration: none;
+      } */
+
+/* (0, 1, 1) */
+p:hover {
+  color: yellowgreen;
+}
+
+/* (1, 0, 0) */
+#my-heading {
+  color: red;
+}
