@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Intro</title>
+
+    <style>
+      /* (0, 0, 1) */
+      p {
+        background-color: blueviolet;
+      }
+
+      /* (0, 0, 1) */
+      a {
+        text-decoration: line-through;
+      }
+
+      /* (0, 0, 2) */
+      nav a {
+        text-decoration: none;
+      }
+
+      /* (0, 0, 2) */
+      p::first-letter {
+        font-size: 32px;
+      }
+
+      /* (0, 1, 0) */
+      .my-class {
+        background-color: chocolate;
+      }
+
+      /* (1, 0, 0) */
+      #my-heading {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="my-class" id="my-heading" style="color: green; font-size: 12px">Welcome to CSS</h1>
+
+    <p class="my-class another-class">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus ducimus beatae atque optio
+      ullam ad <a href="/">veritatis aut iste</a> perferendis ratione quibusdam, et dignissimos a
+      molestias deleniti quidem rem possimus reiciendis.
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam ex odio eligendi.</p>
+
+    <nav>
+      <ul>
+        <li><a href="/">Home</a></li>
+      </ul>
+    </nav>
+  </body>
+</html>
