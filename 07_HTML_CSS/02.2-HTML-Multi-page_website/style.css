@@ -1,0 +1,134 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+a,
+button,
+input,
+textarea {
+  color: inherit;
+  font: inherit;
+  /* background-color: inherit; */
+}
+
+body {
+  background-color: #2d5032;
+  color: aliceblue;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    'Segoe UI',
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    'Open Sans',
+    'Helvetica Neue',
+    sans-serif;
+  margin-inline: 1rem;
+}
+
+header {
+  /* margin: 0px 0px 20px 0px; */
+  /* margin-bottom: 20px; */
+  margin-block: 1rem;
+  /* margin-inline: 10px; */
+}
+
+header ul {
+  /* display: flex; */
+  /* margin: 3rem; */
+  list-style: none;
+  width: fit-content;
+  margin-inline: auto;
+  margin-bottom: 1rem;
+}
+
+header li {
+  display: inline;
+  margin-right: 10px;
+}
+
+header nav a {
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    color: chartreuse;
+  }
+}
+
+/* header nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  color: chartreuse;
+} */
+
+p {
+  max-width: 80ch;
+  line-height: 1.5;
+}
+
+header p {
+  font-size: 2rem;
+}
+
+h1 {
+  text-align: center;
+  margin: 2rem;
+  letter-spacing: 2px;
+  font-weight: 300;
+  text-shadow: 5px 4px 10px black;
+}
+
+.contact {
+  margin: 2rem;
+  max-width: fit-content;
+}
+
+.contact__fieldset {
+  padding: 1rem;
+}
+
+.contact__label {
+  width: 8rem;
+  height: 3rem;
+  display: inline-block;
+}
+
+.contact__input {
+  width: 15rem;
+  color: #0a2830;
+  padding: 0.25rem 0.75rem;
+  border: 2px solid greenyellow;
+  border-radius: 5px;
+  vertical-align: middle;
+
+  &:focus-visible {
+    outline-color: red;
+  }
+}
+
+/* .contact__label--textarea {
+} */
+
+.btn {
+  color: black;
+  padding: 0.25rem 0.75rem;
+}
+
+.contact__btn {
+  /* margin: 0 15rem; */
+  /* margin-left: 14rem; */
+  /* margin-inline-start: 14.6rem;
+  margin-block-start: 0.5rem; */
+  float: right;
+}
+
+/* #btn-div {
+  text-align: right;
+} */
