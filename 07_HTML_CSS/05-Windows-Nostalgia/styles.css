@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  /* 16px -> 62.5% = 10px = 1rem */
+  font-size: 62.5%;
+}
+
+body {
+  background-image: url(win95.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  font-family: Tahoma, sans-serif;
+  align-content: center;
+}
+
+button,
+input {
+  font-family: inherit;
+  color: inherit;
+}
+
+.window {
+  margin: auto;
+  background-color: #c0c0c0;
+  width: 47.5rem;
+  border: 3px solid;
+  border-color: white #424242 #424242 white;
+  border-radius: 5px;
+
+  /* box-shadow:
+    inset -3px -3px 0px #808080,
+    ouset 3px 3px 0px #ffffff; */
+}
+
+.window__header {
+  color: white;
+  background: linear-gradient(to right in oklch, #0c2468, #abcdf2);
+  padding: 0.5rem 2rem;
+  border-radius: 2.5px 2.5px 0px 0px;
+  /* border-bottom: 1px solid; */
+  /* border-image: linear-gradient(to right, #091f5a, #95b3d4) 1; */
+  position: relative;
+}
+
+.window__header::after {
+  content: '';
+  background-color: red;
+  height: 1px;
+  width: 100%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: linear-gradient(to right, #091f5a, #95b3d4);
+}
+
+/* .border {
+  height: 1px;
+   background: linear-gradient(to right, #091f5a, #95b3d4); 
+} */
+
+.window__heading {
+  font-size: 1.25rem;
+  /* margin: 1rem 2rem; */
+}
+
+.window_content {
+  padding: 2rem;
+  /* display: flex;
+  gap: 2rem; */
+}
+
+.window_message {
+  display: inline;
+  margin-inline-start: 2rem;
+  font-size: 1.5rem;
+  /* vertical-align: 1rem; */
+}
+
+.window__image {
+  /* margin: 1rem; */
+  vertical-align: middle;
+  width: 4rem;
+  height: auto;
+  /* aspect-ratio: 1; */
+  /* transform: scale(200%); */
+  /* box-shadow: 3px 3px 0 #808080;
+  border-radius: 1000px; */
+  filter: drop-shadow(3px 3px 0 #808080);
+  image-rendering: pixelated;
+}
+
+.window__btn {
+  margin: 2rem 0 0 36.5rem;
+  /* float: right; */
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 3px outset;
+  letter-spacing: -0.5px;
+  /* font-weight: 600; */
+  cursor: crosshair;
+
+  &:active {
+    border: 3px inset;
+  }
+
+  /* &:hover,
+  &:focus-visible {
+    cursor: crosshair;
+  } */
+}

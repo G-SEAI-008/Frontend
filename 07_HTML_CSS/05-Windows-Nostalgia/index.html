@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <aside class="window" popover="manual" id="window">
+      <header class="window__header">
+        <h2 class="window__heading">Kernel Panic</h2>
+      </header>
+      <!-- <div class="border"></div> -->
+      <section class="window_content">
+        <img
+          class="window__image"
+          src="https://i.postimg.cc/wTQJ3hgb/error.png"
+          width="20"
+          height="20"
+          alt=""
+        />
+        <p class="window_message">Please shut down your computer, and go for a walk.</p>
+        <button class="window__btn" popovertarget="window">Cancel</button>
+      </section>
+    </aside>
+
+    <main><button popovertarget="window">Toggle Window</button></main>
+  </body>
+</html>
