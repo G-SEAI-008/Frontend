@@ -13,6 +13,11 @@ textarea {
   /* background-color: inherit; */
 }
 
+body > * {
+  max-width: 1400px;
+  margin-inline: auto;
+}
+
 body {
   background-color: #2d5032;
   color: aliceblue;
@@ -28,7 +33,6 @@ body {
     'Open Sans',
     'Helvetica Neue',
     sans-serif;
-  margin-inline: 1rem;
 }
 
 header {
@@ -111,6 +115,11 @@ h1 {
   &:focus-visible {
     outline-color: red;
   }
+
+  @media (width < 475px) {
+    width: 10rem;
+    padding: 0.125rem 0.5rem;
+  }
 }
 
 /* .contact__label--textarea {
@@ -132,3 +141,28 @@ h1 {
 /* #btn-div {
   text-align: right;
 } */
+
+/* @media (max-width: 800px) {
+  body {
+    background-color: rebeccapurple;
+  }
+}
+
+@media (min-width: 400px) {
+  body {
+    background-color: blue;
+    margin: 10rem;
+  }
+} */
+
+@media (width < 1200px) {
+  body {
+    background-color: orangered;
+  }
+}
+
+@media (500px < width < 1000px) {
+  body {
+    font-family: 'Times New Roman', Times, serif;
+  }
+}
