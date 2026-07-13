@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vanilla CSS Example</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-dark: #333;
+        --color-light: #afafaf;
+      }
+
+      @layer base {
+        header,
+        footer {
+          @apply bg-dark text-light;
+        }
+
+        @layer components {
+          .grid-item {
+            @apply bg-light p-8 text-center rounded-lg shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all;
+          }
+        }
+      }
+    </style>
+  </head>
+  <body class="flex flex-col font-serif min-h-screen">
+    <header class="p-4">
+      <nav>
+        <ul class="flex justify-center gap-8 md:gap-40">
+          <li><a href="#home" class="hover:text-red-500">Home</a></li>
+          <li><a href="#about" class="hover:text-red-500">About</a></li>
+          <li><a href="#contact" class="hover:text-red-500">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main class="m-8">
+      <div class="grid grid-cols-2 gap-4 p-4 md:grid-cols-3">
+        <div class="grid-item">1</div>
+        <div class="grid-item">2</div>
+        <div class="grid-item">3</div>
+        <div class="grid-item">4</div>
+        <div class="grid-item">5</div>
+        <div class="grid-item">6</div>
+        <div class="grid-item">7</div>
+        <div class="grid-item">8</div>
+        <div class="grid-item col-span-2 md:col-span-1">9</div>
+      </div>
+    </main>
+    <footer class="text-center p-4 mt-auto">
+      <p>&copy; 2025 Vanilla CSS Example</p>
+    </footer>
+  </body>
+</html>
