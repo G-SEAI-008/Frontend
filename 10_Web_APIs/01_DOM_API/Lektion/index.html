@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" id="html-root">
+  <head id="document-head">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js" defer></script>
+    <title>Beispielseite</title>
+  </head>
+  <body
+    class="bodyClass bg-gray-100 min-h-screen flex items-center justify-center p-4"
+  >
+    <div
+      id="outer-container"
+      class="bodyClass bg-white rounded-lg shadow-md p-8 max-w-md w-full"
+    >
+      <h1
+        id="main-heading"
+        class="text-3xl font-bold text-gray-800 mb-4 text-center"
+      >
+        DOM Manipulation
+      </h1>
+      <p id="main-paragraph" class="text-gray-600 mb-6 text-center">
+        Willkommen zur DOM API
+      </p>
+      <div id="inner-container" class="flex justify-center">
+        <button
+          id="click-button"
+          class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded transition-colors duration-300"
+        >
+          Klick mich
+        </button>
+        <button id="toggle-button" class="p-2 border rounded">
+          Klick mich für den Toggle-Effekt!
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
