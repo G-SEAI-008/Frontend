@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input Storage</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+  </head>
+  <body>
+    <div class="mt-5 flex items-center justify-center">
+      <div class="w-96 rounded bg-white p-8 shadow-md">
+        <h1 class="mb-4 text-2xl font-bold">Not really famous quotes...</h1>
+        <form>
+          <input
+            id="userInput"
+            type="text"
+            class="mb-4 w-full border p-2"
+            placeholder="Enter a not very famous quote..."
+          />
+          <small>Keep it safe for work, kiddos!</small
+          ><button class="w-full rounded bg-blue-500 p-2 text-white hover:bg-blue-400">
+            Submit
+          </button>
+        </form>
+        <ul class="mt-4 h-60 overflow-y-scroll bg-gray-100"></ul>
+        <button id="reload" class="mt-5 rounded bg-blue-500 px-4 py-2 text-white hover:bg-blue-400">
+          Reload
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
