@@ -43,9 +43,9 @@ const createListItem = (newTask) => {
     'cursor-pointer',
   );
 
-  //   // * Gehört der Button zum richtigen Task?
-  //   deleteButton.addEventListener('click', () => {
   //     // * Löschen
+  //   deleteButton.addEventListener('click', () => {
+  //   // * Gehört der Button zum richtigen Task?
   //     // * Welches <li> item?
   //     const itemToDelete = ul.querySelector(`#${newTask.id}`);
   //     // * Aktuellen Storage-Stand lesen
@@ -58,9 +58,9 @@ const createListItem = (newTask) => {
   //     itemToDelete.remove();
   //   });
 
-  // * Gehört der Button zum richtigen Task?
+  // * Löschen
   deleteButton.addEventListener('click', () => {
-    // * Löschen
+    // * Gehört der Button zum richtigen Task?
     // * Welches <li> item?
     const itemToDelete = ul.querySelector(`#${newTask.id}`);
     // * Gefilteres Array zurückschreiben
@@ -68,7 +68,7 @@ const createListItem = (newTask) => {
       TASK_STORAGE_KEY,
       getFromStorage(TASK_STORAGE_KEY).filter((task) => task.id !== newTask.id),
     );
-    // * Passendes element aus dem DOM entfernen
+    // * Passendes Element aus dem DOM entfernen
     itemToDelete.remove();
   });
 
