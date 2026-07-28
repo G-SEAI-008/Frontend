@@ -22,7 +22,7 @@ const writeToStorage = (key, data) => {
 //    <p>Tasktext</p>
 //    <button>Delete</button>
 // </li>
-// * Task element erzeugen im DOM
+// * Task Element erzeugen im DOM
 const createListItem = (newTask) => {
   // * Listenelement
   const li = document.createElement('li');
@@ -76,7 +76,7 @@ const createListItem = (newTask) => {
   return li;
 };
 
-// * Gespciherte Tasks in den DOM übertragen
+// * Gespeicherte Tasks in den DOM übertragen
 const renderStorage = () => {
   const myTasks = getFromStorage(TASK_STORAGE_KEY);
 
@@ -111,7 +111,7 @@ const handleFormSubmit = (event) => {
   // * 2. Neuen Task hinzufügen
   myTasks.unshift(newTask);
 
-  // * 3. Aktuallisiertes Array speichern
+  // * 3. Aktualisiertes Array speichern
   writeToStorage(TASK_STORAGE_KEY, myTasks);
 
   // * Formular nach erfolgreichem Submit leeren
