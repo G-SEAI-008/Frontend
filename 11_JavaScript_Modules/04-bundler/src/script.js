@@ -2,6 +2,8 @@ import { TASK_STORAGE_KEY } from './config.js';
 import { createListItem, form, reload, renderStorage, ul } from './ui.js';
 import { writeToStorage, getFromStorage } from './utils.js';
 
+console.log(import.meta.env.VITE_SERVER_URL);
+
 const handleFormSubmit = (event) => {
   event.preventDefault();
   // const inputValue = userInput.value;
