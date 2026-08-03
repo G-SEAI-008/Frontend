@@ -12,6 +12,9 @@ const StudentsList = () => {
     { id: 9, name: 'Kevin', country: 'Italia' },
   ];
 
+  // # Listen-Rendering mit map
+  // * map erzeugt für jeden Datensatz ein eigenes JSX-Element, sodass die Oberfläche direkt aus den Daten entsteht.
+  // ! Ein stabiler, eindeutiger key hilft React, Listeneinträge bei Änderungen korrekt wiederzuerkennen.
   return (
     <ul>
       {/* {students[0].name} from {students[0].country} */}

@@ -5,18 +5,17 @@ import { name, email } from './components/NavBar';
 import StudentsList from './components/StudentsList';
 
 function App() {
-  // # JavaScript
-
   const add = (num1, num2) => num1 + num2;
 
+  // # Formularereignisse kontrollieren
+  // * Der Wert wird erst beim Absenden aus dem Formular-Event gelesen; dafür ist kein zusätzlicher React-State nötig.
   const handleSubmit = (event) => {
+    // ! Ohne preventDefault würde der Browser das Formular klassisch absenden und die Seite neu laden.
     event.preventDefault();
     console.log(event.target['user-email'].value);
   };
 
-  // # return mit JSX
   return (
-    // JSX fragment
     <>
       {/* <NavBar
         title='React Fundamentals'
@@ -34,6 +33,7 @@ function App() {
       <button
         className='cursor-pointer rounded bg-blue-500 px-4 py-2 font-bold text-white hover:bg-blue-700'
         onClick={() => {
+          // * Der Callback wird erst durch den Klick ausgeführt und nicht bereits während des Renderns.
           alert('Button was clicked');
         }}
       >
