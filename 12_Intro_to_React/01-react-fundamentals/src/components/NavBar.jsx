@@ -1,7 +1,23 @@
-function NavBar() {
+// oxlint-disable jsdoc/require-returns
+import './NavBar.css';
+
+/**
+ * This is a namespace that contains documentation elements belonging to the Pets domain.
+ *
+ * @namespace Pets
+ * @param title
+ */
+function NavBar({ user, title }) {
+  // console.log(props);
+
+  // const title = props.title;
+  // const { title } = props;
+
   return (
-    <nav>
-      <ul>
+    <nav className='bg-orange-300 p-2'>
+      <h2>{title}</h2>
+      <p className={user === 'Renke' ? 'bg-red-500' : 'bg-green-500'}>Welcome, {user}</p>
+      <ul className='flex justify-around font-bold'>
         <li>Home</li>
         <li>Contact</li>
         <li>About</li>
@@ -9,6 +25,13 @@ function NavBar() {
     </nav>
   );
 }
+
+// function greet(name) {
+//   console.log('Hello ' + name);
+// }
+
+// greet('Daniel');
+// greet('Eric');
 
 const name = 'Muju';
 const email = 'muju@wbscodingschool.com';
