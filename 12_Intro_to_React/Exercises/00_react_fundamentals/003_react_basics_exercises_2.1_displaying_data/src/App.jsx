@@ -1,19 +1,23 @@
-import './index.css';
+import Student from './components/Student';
 
-// Download the template to get started
+import './index.css';
 
 const studentData = {
   id: 1,
   firstName: 'Testy',
-  lastName: 'McTest',
+  lastName: 'McTestFace',
   age: 42,
-  course: 'Web Development',
+  course: 'Software Engineer',
   city: 'Berlin',
   picture: 'https://randomuser.me/api/portraits/men/1.jpg',
 };
 
-const App = () => {
-  return <div>{/* Your UI goes here */}</div>;
-};
+const App = () => (
+  <>
+    <Student chicken={studentData} />
+    {/* <Student {...studentData} /> */}
+    {/* <Student firstName={studentData.firstName} lastName={studentData.lastName} /> */}
+  </>
+);
 
 export default App;

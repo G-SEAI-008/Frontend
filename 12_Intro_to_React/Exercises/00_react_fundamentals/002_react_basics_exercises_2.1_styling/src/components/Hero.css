@@ -1,0 +1,12 @@
+.hero__heading {
+  background-color: bisque;
+  font-size: 3rem;
+  width: 10rem;
+  animation: pulse 2000ms infinite linear;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.5;
+  }
+}
