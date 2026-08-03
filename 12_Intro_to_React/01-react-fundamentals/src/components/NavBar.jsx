@@ -12,15 +12,16 @@ function NavBar({ user, title }) {
 
   // const title = props.title;
   // const { title } = props;
+  // const nav-item = "cursor-pointer rounded px-3 py-1 text-[#432818] transition-colors hover:bg-orange-100 hover:text-orange-900"
 
   return (
     <nav className='bg-orange-300 p-2'>
       <h2>{title}</h2>
       <p className={user === 'Renke' ? 'bg-red-500' : 'bg-green-500'}>Welcome, {user}</p>
       <ul className='flex justify-around font-bold'>
-        <li>Home</li>
-        <li>Contact</li>
-        <li>About</li>
+        <li className='nav-item'>Home</li>
+        <li className='nav-item'>Contact</li>
+        <li className='nav-item'>About</li>
       </ul>
     </nav>
   );
