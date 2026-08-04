@@ -1,4 +1,4 @@
-const array = ["Marco", () => {}];
+const array = ['Marco', () => {}];
 
 const [name, func] = array;
 
