@@ -1,3 +1,4 @@
+// oxlint-disable arrow-body-style
 import './index.css';
 
 const LightBulb = () => {
