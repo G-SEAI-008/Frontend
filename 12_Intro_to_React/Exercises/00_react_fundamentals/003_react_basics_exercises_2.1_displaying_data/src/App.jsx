@@ -14,7 +14,7 @@ const studentData = {
 
 const App = () => (
   <>
-    <Student chicken={studentData} />
+    <Student studentData={studentData} />
     {/* <Student {...studentData} /> */}
     {/* <Student firstName={studentData.firstName} lastName={studentData.lastName} /> */}
   </>

@@ -1,8 +1,8 @@
 // oxlint-disable arrow-body-style
-const Student = ({ chicken: { picture, firstName, lastName, age, city, course } }) => {
+const Student = ({ studentData: { picture, firstName, lastName, age, city, course } }) => {
   // * Was wir bekommen als Prop
   //  {
-  //   chicken: {
+  //   studentData: {
   //     id: 1,
   //     firstName: 'Testy',
   //     lastName: 'McTestFace',

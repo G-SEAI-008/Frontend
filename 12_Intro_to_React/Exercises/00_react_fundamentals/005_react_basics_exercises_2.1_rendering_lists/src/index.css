@@ -2,5 +2,34 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.card {
+  width: 16rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.card-image {
+  width: 100%;
+}
+
+.card-body {
+  padding: 0 0.75rem;
+  border-radius: 0 0 10px 10px;
+  border-top: none;
+}
+
+.card-graduate {
+  filter: drop-shadow(2px 2px 3px rebeccapurple);
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
