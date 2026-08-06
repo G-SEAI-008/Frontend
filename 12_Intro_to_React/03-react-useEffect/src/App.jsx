@@ -3,7 +3,6 @@ import { useState } from 'react';
 import Effect from './components/Effect';
 import FetchInEffect from './components/FetchInEffect';
 
-// oxlint-disable arrow-body-style
 const App = () => {
   // # Mounting und Unmounting der Effect-Komponente
   // * toggle steuert, ob React Effect mountet oder unmountet.
