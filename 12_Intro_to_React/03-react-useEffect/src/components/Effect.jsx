@@ -17,7 +17,9 @@ const Effect = () => {
 
   // # Render und Effect unterscheiden
   // ! Dieser Aufruf liegt außerhalb von useEffect und läuft bei jedem Render in der Render-Phase.
+  // useEffect(() => {
   console.log('Wird nach jedem Render ausgeführt');
+  // });
 
   // # Effect mit einer Abhängigkeit
   // * React führt den Effect nach dem Mounting und nach jedem Re-render mit geändertem count aus.
