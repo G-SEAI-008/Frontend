@@ -12,7 +12,7 @@ const FetchInEffect = () => {
   // * useEffect selbst bleibt synchron, damit React seine optionale Cleanup-Funktion erhalten kann.
   useEffect(() => {
     // * Das Signal verbindet den Request mit dem AbortController des aktuellen Effects.
-    const controller = new AbortController(); // um den Fetch call abzubrechen
+    const controller = new AbortController();
 
     // * Die innere async-Funktion ermöglicht await, ohne den Effect-Callback asynchron zu machen.
     async function fetchData() {
@@ -29,10 +29,8 @@ const FetchInEffect = () => {
         const data = await res.json();
         setTodos(data);
       } catch (err) {
-        // React StrictMode (dev) kann einen zusätzlichen mount/cleanup cycle auslösen.
-        // Ignoriere abort-bezogene errors, damit nur echte Fehler die UI erreichen.
-        // ! StrictMode kann in der Entwicklung einen zusätzlichen Mounting- und Cleanup-Zyklus auslösen.
-        // * Abbrüche gehören zum Effect-Lifecycle; nur echte Request-Fehler gelangen in den Fehlerzustand.
+        // ! React StrictMode (dev) kann einen zusätzlichen mount/cleanup cycle auslösen.
+        // * Ignoriere abort-bezogene errors, damit nur echte Fehler die UI erreichen.
         if (err.name !== 'AbortError') {
           setError(err.message);
         }
@@ -42,7 +40,6 @@ const FetchInEffect = () => {
     }
     fetchData();
 
-    // Cleanup function, die Fetch abbricht
     // # Laufenden Request beim Unmounting abbrechen
     // * Der Cleanup verhindert, dass ein nicht mehr benötigter Request weiterläuft.
     return () => controller.abort();

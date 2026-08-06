@@ -49,7 +49,7 @@ const Effect = () => {
 
     window.addEventListener('resize', handleResize);
 
-    // Cleanup in return
+    // # Cleanup in return
     // * React ruft den Cleanup vor dem nächsten Effect-Durchlauf und beim Unmounting auf.
     return () => {
       window.removeEventListener('resize', handleResize);
