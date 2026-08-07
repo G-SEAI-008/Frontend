@@ -1,4 +1,3 @@
-// oxlint-disable arrow-body-style
 import { useEffect, useState } from 'react';
 
 // type Status = "idle" | "loading" | "success" | "error"
@@ -8,14 +7,14 @@ const App = () => {
   const [url, setUrl] = useState('https://swapi.tech/api/people');
   const [nextUrl, setNextUrl] = useState(null);
   const [prevUrl, setPrevUrl] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState(null);
   const [status, setStatus] = useState('loading'); // "loading" | "success" | "error"
-  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
-    let ignore = false;
-
     const fetchData = async () => {
       try {
+        setStatus('loading');
         const res = await fetch(url);
 
         if (!res.ok) {
@@ -23,41 +22,21 @@ const App = () => {
         }
 
         const data = await res.json();
+        setPeople(data.results);
+        setNextUrl(data.next);
+        setPrevUrl(data.previous);
 
-        if (!ignore) {
-          setPeople(data.results);
-          setNextUrl(data.next);
-          setPrevUrl(data.previous);
-          setStatus('success');
-        }
-      } catch (err) {
-        if (!ignore) {
-          setErrorMessage(err.message || 'Fetch failed');
-          setStatus('error');
-        }
+        setStatus('success');
+      } catch {
+        setStatus('error');
       }
     };
 
     fetchData();
-
-    return () => {
-      ignore = true;
-    };
   }, [url]); // Effect läuft nur wenn sich `url` ändert
 
-  const handlePrev = () => {
-    if (prevUrl) {
-      setStatus('loading');
-      setUrl(prevUrl);
-    }
-  };
-
-  const handleNext = () => {
-    if (nextUrl) {
-      setStatus('loading');
-      setUrl(nextUrl);
-    }
-  };
+  const handlePrev = () => setUrl(prevUrl);
+  const handleNext = () => setUrl(nextUrl);
 
   return (
     <main className='min-h-screen bg-gray-900 p-8 font-sans'>
@@ -83,11 +62,11 @@ const App = () => {
 
       {status === 'loading' && <p className='text-center font-medium text-gray-200'>Loading...</p>}
       {status === 'error' && (
-        <p className='text-center font-semibold text-red-500'>{errorMessage}</p>
+        <p className='text-center font-semibold text-red-500'>{'Fetch failed'}</p>
       )}
 
       <ul className='grid gap-4 sm:grid-cols-2'>
-        {/* ? = optional chaining: bei null oder undefined, Folgendes nicht weiter ausführen */}
+        {/* ? = optional chaining: bei null oder undefined, Folgendes nicht weiter ausfuhren */}
         {status === 'success' &&
           people?.map((person) => (
             <li key={person.uid} className='rounded bg-white p-4 text-center capitalize shadow'>
