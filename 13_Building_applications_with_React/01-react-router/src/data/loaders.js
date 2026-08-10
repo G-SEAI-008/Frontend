@@ -1,7 +1,7 @@
 // oxlint-disable promise/avoid-new
 export const starsLoader = async () => {
   await new Promise((resolve) => {
-    setTimeout(resolve, 2000);
+    setTimeout(resolve, 0);
   });
   const res = await fetch('/stars.json');
   if (res.status !== 200) {
