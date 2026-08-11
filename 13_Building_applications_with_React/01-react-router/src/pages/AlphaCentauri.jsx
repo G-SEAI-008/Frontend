@@ -1,6 +1,11 @@
 const AlphaCentauri = () => {
+  // useEffect(() => {
+  //   document.title = 'Alpha Centauri | Stars Gallery';
+  // }, []);
+
   return (
     <section className='alpha-centauri-page'>
+      <title>Alpha Centauri | Stars Gallery</title>
       <h3 className='star__heading'>Alpha Centauri - A Stellar Marvel</h3>
       <p className='star__description'>
         Alpha Centauri stands as one of the most intriguing systems in our galactic neighborhood.
