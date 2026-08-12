@@ -10,7 +10,7 @@ const Footer = () => {
         </Link>
       </nav>
       <nav>
-        <h2 className='footer-title'>Company</h2>{' '}
+        <h2 className='footer-title'>Company</h2>
         <Link to='/about' className='link link-hover'>
           About
         </Link>
