@@ -18,10 +18,13 @@ const initalState = {
 };
 
 const reducer = (bookingState, action) => {
-  console.log({ bookingState, action });
+  // console.log({ bookingState, action });
 
   switch (action.type) {
     case 'ADD_BOOKING': {
+      if (bookingState.destinations.includes(action.payload)) {
+        return bookingState;
+      }
       const newDestinations = [...bookingState.destinations, action.payload];
       const premium = newDestinations.length >= 3;
 
@@ -46,8 +49,7 @@ const reducer = (bookingState, action) => {
 
 const BookingContextProvider = ({ children }) => {
   const [bookingState, dispatch] = useReducer(reducer, initalState);
-
-  console.log(bookingState);
+  // console.log(bookingState);
 
   const addDestination = (destinationSlug) => {
     dispatch({ type: 'ADD_BOOKING', payload: destinationSlug });

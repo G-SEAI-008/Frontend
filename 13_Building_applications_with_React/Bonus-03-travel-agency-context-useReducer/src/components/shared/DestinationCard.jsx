@@ -30,7 +30,7 @@ const DestinationCard = ({ title, image, text, slug }) => {
         <p>{text}</p>
         <div className='card-actions justify-end'>
           {/* <Button>Hey!?</Button> */}
-          <button onClick={handleClick} className='btn btn-primary'>
+          <button onClick={handleClick} className={`btn ${isBooked ? 'btn-error' : 'btn-primary'}`}>
             {isBooked ? 'Unbook' : 'Book Now'}
           </button>
         </div>

@@ -2,9 +2,14 @@ import { useEffect, useState } from 'react';
 import { Outlet } from 'react-router';
 
 import { Footer, NavBar } from '../components';
+import { useBooking } from '../contexts/BookingContext';
+import { useTheme } from '../contexts/ThemeContext';
 
 const MainLayout = () => {
   const [destinations, setDestinations] = useState(null);
+
+  const { theme } = useTheme();
+  const { bookingState } = useBooking();
 
   useEffect(() => {
     const loadDestinations = async () => {
@@ -21,7 +26,11 @@ const MainLayout = () => {
   }, []);
 
   return (
-    <div className='flex min-h-screen flex-col'>
+    <div
+      className='flex min-h-screen flex-col'
+      data-theme={bookingState.premium ? `${theme}` : 'halloween'}
+    >
+      {/*  */}
       <NavBar />
       <main className='container mx-auto mb-auto px-4 py-4'>
         {destinations ? (
