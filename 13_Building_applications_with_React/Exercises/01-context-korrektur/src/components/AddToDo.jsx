@@ -1,18 +1,28 @@
+import { use } from 'react';
 import { useState } from 'react';
 
-const AddToDo = ({ setTodos }) => {
+import { TodoContext } from '../contexts/TodoContex';
+import { TodoReducerContext } from '../contexts/TodoReducerContext';
+
+const AddToDo = () => {
   const [newTodo, setNewTodo] = useState('');
+  // const { setTodos } = use(TodoContext);
+  const { addTodo } = use(TodoReducerContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!newTodo.trim()) {
       return alert('Please enter a to-do item');
     }
-    setTodos((prevTodos) => {
-      const updatedTodos = [{ id: Date.now(), text: newTodo, completed: false }, ...prevTodos];
-      localStorage.setItem('todos', JSON.stringify(updatedTodos));
-      return updatedTodos;
-    });
+
+    addTodo(newTodo);
+
+    // setTodos((prevTodos) => {
+    //   // {id: 34254576567856, text: "Katzen füttern", completed: false}
+    //   const updatedTodos = [{ id: Date.now(), text: newTodo, completed: false }, ...prevTodos];
+    //   localStorage.setItem('todos', JSON.stringify(updatedTodos));
+    //   return updatedTodos;
+    // });
     setNewTodo('');
   };
 
