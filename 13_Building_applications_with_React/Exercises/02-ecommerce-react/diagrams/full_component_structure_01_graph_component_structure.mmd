@@ -1,0 +1,45 @@
+graph TD
+    Entry["⚛️ main.jsx"] --> Router{"🧭 BrowserRouter"}
+    Router --> App["⚛️ App.jsx<br/>Routes"]
+    App --> Layout["🧱 MainLayout"]
+
+    subgraph LayoutLayer["Layout"]
+        Layout --> Provider["📦 CartProvider<br/>useReducer + useEffect"]
+        Provider --> Nav["⚛️ NavBar"]
+        Provider --> Outlet["🧭 Outlet"]
+    end
+
+    subgraph Pages["Seiten"]
+        Outlet --> Home["⚛️ Home"]
+        Outlet --> Category["⚛️ Category"]
+        Outlet --> Cart["⚛️ Cart"]
+    end
+
+    subgraph Components["Wiederverwendbare Komponenten"]
+        Home --> CategoryLinks["⚛️ CategoryLinks"]
+        Home --> ProductGrid["⚛️ ProductGrid"]
+        Category --> ProductGrid
+        ProductGrid --> ProductCard["⚛️ ProductCard"]
+        ProductGrid --> ProductSkeleton["⏳ ProductCardSkeleton"]
+        ProductGrid --> Alert["⚠️ Alert"]
+        CategoryLinks --> CategorySkeleton["⏳ CategoriesSkeleton"]
+        CategoryLinks --> Alert
+        Cart --> CartTable["⚛️ CartTable"]
+        Cart --> Alert
+    end
+
+    CartTable --> Price["🧮 priceFormat"]
+
+    classDef root fill:#E6E6FA,stroke:#333,stroke-width:2px,color:#1E3A5F
+    classDef router fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px,color:#4A148C
+    classDef provider fill:#FFF9C4,stroke:#F9A825,stroke-width:2px,color:#4E342E
+    classDef page fill:#E1F5FE,stroke:#01579B,stroke-width:2px,color:#003C5A
+    classDef component fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    classDef utility fill:#E0F2F1,stroke:#00695C,stroke-width:2px,color:#004D40
+
+    class Entry,App,Layout root
+    class Router,Outlet router
+    class Provider provider
+    class Home,Category,Cart page
+    class Nav,CategoryLinks,ProductGrid,ProductCard,ProductSkeleton,CategorySkeleton,Alert,CartTable component
+    class Price utility

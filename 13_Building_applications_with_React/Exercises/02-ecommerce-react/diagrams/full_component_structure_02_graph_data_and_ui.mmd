@@ -1,0 +1,35 @@
+graph TB
+    API[("🌐 FakeStore API")]
+
+    subgraph DataSources["Daten laden"]
+        Home["⚛️ Home"] -->|"getProducts()"| Client["🔌 fakeStore.js<br/>get(path)"]
+        Category["⚛️ Category"] -->|"getProductsByCategory(name)"| Client
+        CategoryLinks["⚛️ CategoryLinks"] -->|"getCategories()"| Client
+        Client <-->|"HTTPS + JSON"| API
+    end
+
+    subgraph ProductStates["Produktdarstellung"]
+        Home -->|"products + loading"| Grid["⚛️ ProductGrid"]
+        Category -->|"products + loading"| Grid
+        Grid -->|"loading"| ProductSkeleton["⏳ ProductCardSkeleton"]
+        Grid -->|"empty"| Alert["⚠️ Alert"]
+        Grid -->|"success"| ProductCard["⚛️ ProductCard"]
+    end
+
+    subgraph CategoryStates["Kategoriedarstellung"]
+        CategoryLinks -->|"loading"| CategorySkeleton["⏳ CategoriesSkeleton"]
+        CategoryLinks -->|"empty"| Alert
+        CategoryLinks -->|"success"| Links["🧭 Kategorie-Links"]
+    end
+
+    classDef page fill:#E1F5FE,stroke:#01579B,stroke-width:2px,color:#003C5A
+    classDef api fill:#FFEBEE,stroke:#C62828,stroke-width:2px,color:#7F0000
+    classDef service fill:#FFF3E0,stroke:#EF6C00,stroke-width:2px,color:#5D2A00
+    classDef component fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    classDef state fill:#FFF9C4,stroke:#F9A825,stroke-width:2px,color:#4E342E
+
+    class Home,Category,CategoryLinks page
+    class API api
+    class Client service
+    class Grid,ProductCard,Links component
+    class ProductSkeleton,CategorySkeleton,Alert state

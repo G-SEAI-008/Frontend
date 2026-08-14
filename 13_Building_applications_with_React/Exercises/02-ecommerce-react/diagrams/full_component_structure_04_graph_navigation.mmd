@@ -1,0 +1,34 @@
+graph TB
+    Router["🧭 BrowserRouter"] --> Routes["🗺️ Routes"]
+    Routes --> Layout["🧱 MainLayout<br/>NavBar + Outlet"]
+
+    Layout --> HomeRoute{"/"}
+    Layout --> CategoryRoute{"/category/:name"}
+    Layout --> CartRoute{"/cart"}
+
+    HomeRoute --> Home["⚛️ Home"]
+    CategoryRoute --> Category["⚛️ Category"]
+    CartRoute --> Cart["⚛️ Cart"]
+
+    Nav["⚛️ NavBar"] -->|"Home Link"| HomeRoute
+    Nav -->|"Cart Link"| CartRoute
+    CategoryLinks["⚛️ CategoryLinks"] -->|"Link mit category"| CategoryRoute
+    ProductCard["⚛️ ProductCard"] -->|"More from category"| CategoryRoute
+    CartTable["⚛️ CartTable"] -->|"Kategorie-Badge"| CategoryRoute
+
+    CategoryRoute --> Params["🎣 useParams()<br/>name"]
+    Params --> Request["🌐 getProductsByCategory(name)"]
+
+    classDef router fill:#F3E5F5,stroke:#7B1FA2,stroke-width:2px,color:#4A148C
+    classDef layout fill:#E6E6FA,stroke:#333,stroke-width:2px,color:#1E3A5F
+    classDef route fill:#FFF9C4,stroke:#F9A825,stroke-width:2px,color:#4E342E
+    classDef page fill:#E1F5FE,stroke:#01579B,stroke-width:2px,color:#003C5A
+    classDef component fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px,color:#1B5E20
+    classDef hook fill:#FFF3E0,stroke:#EF6C00,stroke-width:2px,color:#5D2A00
+
+    class Router,Routes router
+    class Layout layout
+    class HomeRoute,CategoryRoute,CartRoute route
+    class Home,Category,Cart page
+    class Nav,CategoryLinks,ProductCard,CartTable component
+    class Params,Request hook
