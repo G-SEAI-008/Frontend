@@ -1,8 +1,4 @@
-import { use } from 'react';
-
-const SearchResults = ({ productsPromise }) => {
-  const { products } = use(productsPromise);
-
+const SearchResults = ({ products }) => {
   return (
     <div className='mx-auto mt-6 grid w-full max-w-6xl grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-5'>
       {products.length === 0 ? (

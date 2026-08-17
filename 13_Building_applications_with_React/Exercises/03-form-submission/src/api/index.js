@@ -46,10 +46,14 @@ export const searchProducts = async ({ category, minPrice, maxPrice, query } = {
     maxPrice,
     query,
   });
+
   if (error) return { error: z.prettifyError(error), products: [] };
+
   const response = await fetch('https://fakestoreapi.com/products');
+
   if (!response.ok) return { error: 'Something went wrong while fetching products', products: [] };
   const products = await response.json();
+
   const filteredProducts = products.filter((product) => {
     const matchesCategory = !data.category || product.category === data.category;
     const matchesMinPrice = data.minPrice === undefined || product.price >= data.minPrice;
@@ -59,5 +63,6 @@ export const searchProducts = async ({ category, minPrice, maxPrice, query } = {
 
     return matchesCategory && matchesMinPrice && matchesMaxPrice && matchesQuery;
   });
+
   return { products: filteredProducts, error: null };
 };
