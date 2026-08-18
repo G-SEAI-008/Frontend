@@ -64,9 +64,16 @@ person.age = 73;
 console.log(person);
 
 // ! Type narrowing
+
 if (person.city) {
   console.log(person.city.toUpperCase());
-}
+} // checked truthy
+
+// Oder:
+// Short-circuit evaluation with logical AND
+person.city && console.log(person.city.toUpperCase());
+// checked truthy
+
 // Oder:
 console.log(person.city?.toUpperCase()); // ? checked auf `null` und `undefined`
 
@@ -181,7 +188,6 @@ function handleDirection(dir: Direction) {
     case 'down':
       console.log('Moving down');
       break;
-
     default:
       // TypeScript will warn if we forget a case
       const _exhaustiveCheck: never = dir;
@@ -192,3 +198,17 @@ function handleDirection(dir: Direction) {
 
 handleDirection('left');
 // handleDirection('forward'); // ❌ Error: Argument of type '"forward"' is not assignable to type 'Direction'
+
+// # Function types
+type Calculation = (num1: number, num2: number) => number;
+
+const add: Calculation = (a, b) => a + b;
+const subtract: Calculation = (a, b) => a - b;
+
+// oder inline
+const multiply = (a: number, b: number): number => a * b;
+const multiply2: Calculation = (a, b) => a * b;
+
+const divide = (a: number, b: number): number => a / b;
+
+// add('4', 5);
