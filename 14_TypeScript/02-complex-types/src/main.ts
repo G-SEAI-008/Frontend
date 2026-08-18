@@ -1,4 +1,4 @@
-// oxlint-disable no-unused-vars
+// oxlint-disable no-unused-vars prefer-const typescript/array-type
 
 let greeting = 'hello'; // Typ: string
 const fixedGreeting = 'Hello'; // Typ: "Hello"
@@ -176,22 +176,27 @@ movePlayer('down'); // ✅
 // Example 3: Switch statement with exhaustive checking
 function handleDirection(dir: Direction) {
   switch (dir) {
-    case 'left':
+    case 'left': {
       console.log('Moving left');
       break;
-    case 'right':
+    }
+    case 'right': {
       console.log('Moving right');
       break;
-    case 'up':
+    }
+    case 'up': {
       console.log('Moving up');
       break;
-    case 'down':
+    }
+    case 'down': {
       console.log('Moving down');
       break;
-    default:
+    }
+    default: {
       // TypeScript will warn if we forget a case
       const _exhaustiveCheck: never = dir;
       return _exhaustiveCheck;
+    }
     // console.log('Unkown direction');
   }
 }
