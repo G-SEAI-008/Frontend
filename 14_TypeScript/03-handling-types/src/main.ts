@@ -1,5 +1,7 @@
 // oxlint-disable no-unused-vars typescript/prefer-enum-initializers unicorn/prefer-spread no-throw-literal unicorn/prefer-ternary
 
+import './style.css';
+
 // # Enums
 enum Direction {
   Up = 'up',
@@ -174,32 +176,124 @@ throwSomething(true);
 throwSomething(false);
 
 // # Der `in` Operator
-// * Mit `in` auf ein Objekt-Property prüfen. gibt boolean zurück
+// * Mit `in` auf ein Objekt-Property prüfen. Gibt boolean zurück
 
-type Dog = { bark: () => void };
-type Cat = { meow: () => void };
+// # Discriminated Unions
+type Dog = { kind: 'dog'; bark: () => void };
+type Cat = { kind: 'cat'; meow: () => void };
 
-type Pet = Dog | Cat;
+type Bird = { kind: 'bird'; tweet: () => void };
+// type Fish = { kind: 'fish'; swim: () => void };
+
+type Pet = Dog | Cat | Bird;
+
+// ! Type predicate
+const isDog = (pet: Pet): pet is Dog => {
+  return 'bark' in pet;
+};
 
 function speak(pet: Pet) {
-  if ('bark' in pet) {
+  if (pet.kind === 'dog') {
     pet.bark();
-  } else {
+  } else if (pet.kind === 'cat') {
     pet.meow();
+  } else {
+    pet.tweet();
   }
 }
 
-const dog: Dog = { bark: () => console.log('Woof') };
-const cat: Cat = { meow: () => console.log('Meow') };
+const dog: Dog = { kind: 'dog', bark: () => console.log('Woof') };
+const cat: Cat = { kind: 'cat', meow: () => console.log('Meow') };
 
 speak(dog);
 speak(cat);
 
-function alertUsers(value: string | MessageObject) {
+function alertUsers(value: string | MessageObject | null) {
   // ? Prüfe value !== null, weil typeof null ebenfalls "object" ergibt.
   if (typeof value === 'object' && value !== null && 'message' in value) {
     console.log(value.message);
   } else {
     console.log(value);
   }
+}
+
+function speakSwitch(pet: Pet) {
+  switch (pet.kind) {
+    case 'dog': {
+      pet.bark();
+      break;
+    }
+    case 'cat': {
+      pet.meow();
+      break;
+    }
+    case 'bird': {
+      pet.tweet();
+      break;
+    }
+    default: {
+      const _exhaustiveCheck: never = pet;
+      return _exhaustiveCheck;
+    }
+  }
+}
+
+// # Type Assertion
+// * Not-Null Assertion
+const btn = document.querySelector('#btn')!;
+
+// function missingElement(selector: string): never {
+//   throw new Error(`Expected element not found: ${selector}`);
+// }
+// const dialog = document.querySelector('dialog') ?? missingElement('dialog');
+// dialog.showModal();
+
+btn.textContent = 'CLICK!!!!';
+btn.classList.add('px-4');
+
+// * NotType Assertion mit `as`
+// ! Type Cast (Typumwandlung)
+const input = document.querySelector('#text-input') as HTMLInputElement;
+console.log(input.value);
+
+const dialog = document.querySelector('dialog'); // HTMLDialogElement | null
+const someElement = document.querySelector('.modal'); // Element | null
+
+type Post = {
+  userId: number;
+  id: number;
+  title: string;
+  body: string;
+};
+
+// Fetch and process the posts
+async function fetchPosts() {
+  const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+  const posts = (await response.json()) as Post[];
+
+  // Log the title of each post
+  posts.forEach((post) => {
+    console.log(`Post #${post.id}: ${post.title}`);
+    // console.log(`Post #${post.id}: ${post.title} ${post.somethingElse}`); // Property 'somethingElse' does not exist on type 'Post'
+  });
+}
+
+await fetchPosts();
+
+// * localStorage
+type DiaryEntry = {
+  id: string;
+  url: string;
+  title: string;
+};
+
+function getFromLocalStorage(key: string) {
+  const localDataStr = localStorage.getItem(key);
+
+  if (!localDataStr) {
+    return;
+  }
+
+  const localData = JSON.parse(localDataStr) as DiaryEntry[];
+  console.log(localData[0].title);
 }
