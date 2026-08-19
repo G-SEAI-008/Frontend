@@ -1,0 +1,26 @@
+{
+  "name": "my-modern-app",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "typescript": "~7.0.2",
+    "vite": "^8.2.1",
+    "vite-plugin-checker": "^0.14.5"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@weyvern/console-to-dom": "^1.0.4",
+    "tailwindcss": "^4.3.3"
+  },
+  "aube": {
+    "allowBuilds": {
+      "@tailwindcss/oxide": true
+    }
+  }
+}
