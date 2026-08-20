@@ -136,8 +136,14 @@ const myTuple = makeTuple<number, string>(3, 'Jimmy');
 // # Der `object` Type im Vergleich zu `{}`
 // * unkown → Akzeptiert alles, verlangt von uns aber eine Type-Prüfung
 // * {} → wie `unkown`, welches zusätzlich noch `null` und `undefined` ausschließt
-// * `object` → deckt alle nicht primitiv types ab
-const makeTupleArray = <T extends Record<string, unknown>>(obj: T) => {
+// * `object` → deckt alle nicht primitive types ab
+const makeTupleArray = <T extends object>(obj: T) => Object.entries(obj);
+
+// console.log(typeof {}); // "object"
+// console.log(typeof []); // "object"
+
+// * Alternative: No arrays, but just {} → Objects
+const makeTupleArrayOnlyObjects = <T extends Record<string, unknown>>(obj: T) => {
   if (Object.keys(obj).length === 0) {
     console.log('Das Objekt ist leer');
     return [];
@@ -159,9 +165,6 @@ console.log(makeTupleArray({}));
 // console.log(makeTupleArray(undefined));
 // console.log(makeTupleArray([0, 1, 2, 3, 4]));
 // console.log(makeTupleArray([]));
-
-// console.log(typeof {}); // "object"
-// console.log(typeof []); // "object"
 
 // ? Was ist mit nur Arrays und keine Objects?
 
