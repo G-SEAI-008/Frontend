@@ -135,8 +135,16 @@ const myTuple = makeTuple<number, string>(3, 'Jimmy');
 
 // # Der `object` Type im Vergleich zu `{}`
 // * unkown → Akzeptiert alles, verlangt von uns aber eine Type-Prüfung
-// * {} → wie `unkown`, welches zusästlich noch `null` und `undefined` ausschließt
-const makeTupleArray = <T extends object>(obj: T) => Object.entries(obj);
+// * {} → wie `unkown`, welches zusätzlich noch `null` und `undefined` ausschließt
+// * `object` → deckt alle nicht primitiv types ab
+const makeTupleArray = <T extends Record<string, unknown>>(obj: T) => {
+  if (Object.keys(obj).length === 0) {
+    console.log('Das Objekt ist leer');
+    return [];
+  }
+
+  return Object.entries(obj);
+};
 
 const myObj = {
   a: 'some string',
@@ -144,7 +152,37 @@ const myObj = {
 };
 
 console.log(makeTupleArray(myObj));
+console.log(makeTupleArray({}));
 // console.log(makeTupleArray(42));
 // console.log(makeTupleArray('string'));
 // console.log(makeTupleArray(null));
 // console.log(makeTupleArray(undefined));
+// console.log(makeTupleArray([0, 1, 2, 3, 4]));
+// console.log(makeTupleArray([]));
+
+// console.log(typeof {}); // "object"
+// console.log(typeof []); // "object"
+
+// ? Was ist mit nur Arrays und keine Objects?
+
+const logArray = <T>(array: T[]): void => {
+  if (array.length === 0) {
+    console.log('Das Array ist leer');
+  } else {
+    console.log(array);
+  }
+};
+
+// console.log(logArray(myObj));
+console.log(logArray([]));
+
+// # `keyof`
+type SomeObject = {
+  a: string;
+  b: number;
+};
+
+type SomeObjectKeys = keyof SomeObject;
+// type SomeObjectKeys = "a" | "b";
+
+const someKey: SomeObjectKeys = 'a';
