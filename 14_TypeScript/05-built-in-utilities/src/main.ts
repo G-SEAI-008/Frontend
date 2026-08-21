@@ -1,4 +1,4 @@
-// oxlint-disable typescript/array-type no-unused-vars typescript/ban-types
+// oxlint-disable typescript/array-type no-unused-vars typescript/ban-types typescript/prefer-readonly-parameter-types
 
 // # Partial<T>
 // * Makes all properties in `T` optional.
@@ -20,7 +20,7 @@ const validateUserForm = ({ name, email, password }: User) => {
     newErrors.email = 'Email is required';
   }
   if (!password.trim()) {
-    newErrors.password = 'PAssword is required';
+    newErrors.password = 'Password is required';
   }
 
   return newErrors;

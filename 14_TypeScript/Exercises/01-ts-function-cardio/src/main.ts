@@ -1,4 +1,4 @@
-// oxlint-disable typescript/ban-ts-comment no-shadow no-unused-vars
+// oxlint-disable typescript/ban-ts-comment no-shadow no-unused-vars typescript/prefer-readonly-parameter-types
 // TYPESCRIPT FUNCTION CARDIO
 // # 1
 function multiply(a: number, b: number): number {

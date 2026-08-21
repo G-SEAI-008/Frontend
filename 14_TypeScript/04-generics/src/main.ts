@@ -1,4 +1,4 @@
-// oxlint-disable typescript/array-type no-unused-vars typescript/ban-types
+// oxlint-disable typescript/array-type no-unused-vars typescript/ban-types typescript/no-unnecessary-type-parameters typescript/no-confusing-void-expression typescript/prefer-readonly-parameter-types typescript/no-unsafe-return typescript/no-unsafe-type-assertion
 
 // const stringArray: string[] = ['1', '2', '3', '4'];
 const stringArray: Array<string> = ['1', '2', '3', '4'];
@@ -6,7 +6,7 @@ const stringArray: Array<string> = ['1', '2', '3', '4'];
 // # Generic Functions
 // # Generic Type Alias
 
-fetch('https://duckpond-89zn.onrender.com/wild-ducks');
+// fetch('https://duckpond-89zn.onrender.com/wild-ducks');
 
 const fetchData = async <T>(url: string, options?: RequestInit): Promise<T> => {
   const res = await fetch(url, options);
@@ -46,7 +46,9 @@ const tmdbResponse = await fetchData<ApiResponse<Movie>>(
   options,
 );
 
-tmdbResponse.results.forEach((movie) => console.log(movie.original_title));
+tmdbResponse.results.forEach((movie) => {
+  console.log(movie.original_title);
+});
 
 // fetchData<Duck[]>()
 
