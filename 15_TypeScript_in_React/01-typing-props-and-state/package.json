@@ -1,7 +1,7 @@
 {
   "name": "01-typing-props-and-state",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
