@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useEffect, useState } from 'react';
 
 import type { ComponentStatus, User } from '../types';
@@ -17,24 +16,32 @@ const userArr: User[] = [
 ];
 
 const UserList = () => {
-  const [users, setUsers] = useState<User[] | null>(null);
+  // TypeScript inferiert den Typ automatisch aus dem Initialwert (number)
+  const [counter, setCounter] = useState(0);
+
+  // const [users, setUsers] = useState([] as User[]); // Alternative: Type Assertion mit 'as'
+  const [users, setUsers] = useState<User[]>([]); // Explizite Typisierung mit Generic <User[]>
+
+  // TypeScript inferiert automatisch boolean
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-  const [status, setStatus] = useState<ComponentStatus>('unset'); // "unset" | "loading" | "success" | "error"
+
+  // Union Type: State kann null ODER string sein
+  const [error, setError] = useState<null | string>(null);
+
+  // Generic mit importiertem Type ('unset' | 'loading' | 'success' | 'error')
+  const [status, setStatus] = useState<ComponentStatus>('unset');
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setStatus('loading');
+    // fetch...
     setUsers(userArr);
     setStatus('success');
-    setError(null);
-    setLoading((prev) => !prev);
-    setError('Fetch failed');
   }, []);
 
   return (
     <div>
-      {users?.map((user) => (
-        <p key={user.id}>{user.info}</p>
+      {users.map((user) => (
+        <p key={user.id}>{user.username}</p>
       ))}
     </div>
   );
