@@ -29,4 +29,4 @@ const UserProfile = ({ username, img, info, status }: UserProfileProps) => {
 // };
 
 export default UserProfile;
-export { type UserProfileProps };
+export type { UserProfileProps };
