@@ -4,7 +4,7 @@ import UserProfile from './components/UserProfile';
 
 const user = {
   username: 'Guybrush',
-  img: 'https://tse1.mm.bing.net/th/id/OIP.RsW3Z2PMxGQwMa2LZzvOngHaFZ?cb=12&pid=Api',
+  img: 'https://upload.wikimedia.org/wikipedia/en/5/5f/Guybrush_Threepwood.png?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=original',
   info: 'Info Text',
   status: true,
 };
