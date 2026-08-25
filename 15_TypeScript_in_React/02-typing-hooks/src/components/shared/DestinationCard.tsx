@@ -21,7 +21,7 @@ const DestinationCard = ({ title, image, description, slug }: Omit<Destination, 
   return (
     <div data-theme={theme} className='card bg-base-100 shadow-md'>
       <figure>
-        <img src={image} alt='Tokyo' className='h-48 w-full object-cover' />
+        <img src={image} alt={title} className='h-48 w-full object-cover' />
       </figure>
       <div className='card-body'>
         <Link to={`/destinations/${slug}`}>

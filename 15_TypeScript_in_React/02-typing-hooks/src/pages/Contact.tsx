@@ -39,7 +39,7 @@ const Contact = () => {
             id='message'
             className='textarea textarea-bordered h-32 w-full'
             placeholder='Type your message here...'
-          ></textarea>
+          />
         </div>
         <div className='text-right'>
           <button type='submit' className='btn btn-primary'>

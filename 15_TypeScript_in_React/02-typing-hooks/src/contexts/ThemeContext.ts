@@ -1,5 +1,4 @@
-import { use } from 'react';
-import { createContext } from 'react';
+import { createContext, use } from 'react';
 
 const themes = [
   'halloween',
@@ -32,5 +31,5 @@ const useTheme = () => {
   return context;
 };
 
-export { ThemeContext, useTheme, themes };
+export { ThemeContext, themes, useTheme };
 export type { Theme };
