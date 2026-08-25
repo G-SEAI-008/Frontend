@@ -1,0 +1,16 @@
+@import 'tailwindcss';
+@plugin "daisyui" {
+  themes:
+    halloween --default,
+    cyberpunk,
+    dim,
+    abyss,
+    retro,
+    lemonade,
+    caramellatte,
+    lofi;
+}
+
+/* a.active {
+  text-decoration: underline;
+} */
