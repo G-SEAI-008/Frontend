@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import Alert from './components/Alert';
 import Avatar from './components/Avatar';
 import Counter from './components/Counter';
@@ -9,16 +11,36 @@ import Toggle from './components/Toggle';
 import Container from './layouts/Container';
 
 const App = () => {
+  const [isOn, setIsOn] = useState(false);
+
+  const onToggle = () => {
+    setIsOn((on) => !on);
+  };
+
   return (
     <Container style={{ maxWidth: '600px', margin: '0 auto' }}>
-      <Greeting name={123} />
-      <Counter initialCount='0' />
-      <Status status='idle' />
-      <ProfileCard user={{ name: 'Ada' }} />
-      <Alert message={false} type='info' />
-      <ProductList products={[{ id: 1, title: 'Book' }, { title: 'Pen' }]} />
-      <Toggle isOn='yes' onToggle={'not a function'} />
-      <Avatar url={1234} altText={false} />
+      <Greeting name='Kevin' />
+      <Greeting name='' />
+      <Counter initialCount={13} />
+      <Status status='success' />
+      <ProfileCard user={{ name: 'Ada', age: 36 }} />
+      <Alert message={'Hallo'} type='info' />
+      <ProductList
+        products={[
+          { id: 1, title: 'Book' },
+          { id: 4356, title: 'Pen' },
+        ]}
+      />
+      <Toggle isOn={isOn} onToggle={onToggle} />
+      <Toggle
+        isOn={isOn}
+        onToggle={(event) => {
+          event.preventDefault();
+          setIsOn((on) => !on);
+        }}
+      />
+      <Avatar />
+      <Avatar url={'https://i.pravatar.cc/50'} altText={'Profilbild einer zufälligen Person'} />
     </Container>
   );
 };
