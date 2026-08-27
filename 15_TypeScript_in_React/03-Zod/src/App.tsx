@@ -1,17 +1,20 @@
 import { useActionState } from 'react';
+import z from 'zod';
 
-import { sleep, validate } from './utils/index';
+import { FormSchema, sleep } from './utils/index';
 
 const initialState = {
   input: {
     name: '',
+    number: '',
     email: '',
     message: '',
   },
   errors: {
-    name: '',
-    email: '',
-    message: '',
+    name: [''],
+    number: [''],
+    email: [''],
+    message: [''],
   },
   success: false,
 };
@@ -22,22 +25,39 @@ const action = async (_prevState: FormState, formData: FormData) => {
   // oxlint-disable-next-line typescript/no-unsafe-type-assertion
   const data = Object.fromEntries(formData) as FormState['input'];
 
-  const validationErrors = validate(data);
+  const { success, data: dataZod, error } = FormSchema.safeParse(data);
 
-  if (Object.keys(validationErrors).length > 0) {
+  console.log({ data, dataZod });
+
+  if (success) {
+    console.log(dataZod);
+    await sleep(1000); // simuliert fetch()
     return {
-      input: data,
-      errors: { ...initialState.errors, ...validationErrors },
-      success: false,
+      ...initialState,
+      success: true,
     };
   }
 
-  await sleep(1000); // simuliert fetch()
+  // console.log(z.prettifyError(error));
+  // console.log(z.flattenError(error));
+  const validationErrors = z.flattenError(error).fieldErrors;
+  console.log(validationErrors);
 
   return {
-    ...initialState,
-    success: true,
+    input: data,
+    errors: { ...initialState.errors, ...validationErrors },
+    success: false,
   };
+
+  // const validationErrors = validate(data);
+
+  // if (Object.keys(validationErrors).length > 0) {
+  //   return {
+  //     input: data,
+  //     errors: { ...initialState.errors, ...validationErrors },
+  //     success: false,
+  //   };
+  // }
 };
 
 const App = () => {
@@ -56,12 +76,30 @@ const App = () => {
             <input
               name='name'
               id='name'
+
               className='mt-1 w-full rounded border border-gray-300 px-3 py-2'
               placeholder='Leia Organa'
               defaultValue={state?.input?.name}
             />
-            {state.errors.name !== '' && (
-              <p className='mt-1 text-sm text-red-600'>{state.errors.name}</p>
+            {state.errors.name.length > 0 && (
+              <p className='mt-1 text-sm text-red-600'>{state.errors.name.join(', ')}</p>
+            )}
+          </div>
+
+          <div>
+            <label className='block text-sm font-medium text-gray-200' htmlFor='number'>
+              Number
+            </label>
+            <input
+              name='number'
+              // type='number'
+              required
+              className='mt-1 w-full rounded border border-gray-300 px-3 py-2'
+              placeholder='0-999'
+              defaultValue={state?.input?.number}
+            />
+            {state.errors.number.length > 0 && (
+              <p className='mt-1 text-sm text-red-600'>{state.errors.number[0]}</p>
             )}
           </div>
 
@@ -76,8 +114,8 @@ const App = () => {
               placeholder='leia@rebellion.org'
               defaultValue={state?.input?.email}
             />
-            {state.errors.email !== '' && (
-              <p className='mt-1 text-sm text-red-600'>{state.errors.email}</p>
+            {state.errors.email.length > 0 && (
+              <p className='mt-1 text-sm text-red-600'>{state.errors.email.join(', ')}</p>
             )}
           </div>
 
@@ -93,8 +131,8 @@ const App = () => {
               placeholder='Tell us how we can help...'
               defaultValue={state?.input?.message}
             />
-            {state.errors.message !== '' && (
-              <p className='mt-1 text-sm text-red-600'>{state.errors.message}</p>
+            {state.errors.message.length > 0 && (
+              <p className='mt-1 text-sm text-red-600'>{state.errors.message.join(', ')}</p>
             )}
           </div>
 
