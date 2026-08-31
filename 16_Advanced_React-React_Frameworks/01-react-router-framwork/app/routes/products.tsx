@@ -1,3 +1,4 @@
+// oxlint-disable import/exports-last
 import Products from '~/components/Products';
 import type { Product } from '~/components/Products';
 
@@ -19,7 +20,7 @@ const loader = async () => {
 };
 
 // Nur für clientseitiges laden (clientLoader)
-const HydrateFallback = () => {
+export const HydrateFallback = () => {
   return <p>Loading...</p>;
 };
 
@@ -32,7 +33,7 @@ const ProductsPage = ({ loaderData }: Route.ComponentProps) => {
   );
 };
 
-const ErrorBoundary = () => {
+export const ErrorBoundary = () => {
   return (
     <div>
       <h2>Something went wrong!</h2>
@@ -41,4 +42,4 @@ const ErrorBoundary = () => {
 };
 
 export default ProductsPage;
-export { loader, HydrateFallback, ErrorBoundary };
+export { loader };
