@@ -1,18 +1,31 @@
+// oxlint-disable import/exports-last
+import { isRouteErrorResponse } from 'react-router';
+
+import type { Product } from '~/components/Products';
+
 import type { Route } from './+types/error-demo';
 
 // oxlint-disable typescript/require-await typescript/only-throw-error
-const loader = async () => {
-  const res = await fetch('https://fakestoreapi.com/products');
+export const loader = async () => {
+  const res = await fetch('https://fakestoreapi.com/quatsch');
 
   console.log('Ich bin im loader()');
 
   if (!res.ok) {
-    throw new Response('Failed to fetch', { status: res.status });
-    //  { status: res.status } bspw.  { status: 404 }
+    throw new Response('Failed to fetch', {
+      status: res.status,
+      statusText: res.statusText,
+    });
   }
 
-  return res.json();
+  return res.json() as Promise<Product[]>;
 };
+
+// throw new Response('Failed to fetch', ...)
+//                            ↓
+// error.status      → zum Beispiel 404
+// error.statusText  → zum Beispiel "Not Found"
+// error.data        → "Failed to fetch"
 
 const ErrorDemo = ({ loaderData }: Route.ComponentProps) => {
   console.log('Fetch war erfolgreich');
@@ -25,14 +38,28 @@ const ErrorDemo = ({ loaderData }: Route.ComponentProps) => {
   );
 };
 
-const ErrorBoundary = () => {
-  return (
-    <div>
-      <h2>Something went wrong!</h2>
-      <p>Could not load the data</p>
-    </div>
-  );
+export const ErrorBoundary = ({ error }: Route.ErrorBoundaryProps) => {
+  if (isRouteErrorResponse(error)) {
+    return (
+      <div role='alert'>
+        <h2>
+          {error.status} {error.statusText || 'Request failed'}
+        </h2>
+        <p>{typeof error.data === 'string' ? error.data : JSON.stringify(error.data)}</p>
+      </div>
+    );
+  }
+
+  if (error instanceof Error) {
+    return (
+      <div role='alert'>
+        <h2>Something went wrong!</h2>
+        <p>{error.message}</p>
+      </div>
+    );
+  }
+
+  return <p role='alert'>Unknown error</p>;
 };
 
 export default ErrorDemo;
-export { loader, ErrorBoundary };
