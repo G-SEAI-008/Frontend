@@ -5,7 +5,7 @@ type ErrorProps = {
   retry: () => void;
 };
 
-const Error = ({ error, retry }: ErrorProps) => {
+const ErrorPage = ({ error, retry }: ErrorProps) => {
   return (
     <div className='flex flex-col items-center justify-center'>
       <h2 className='mb-2 text-2xl font-bold text-red-700'>Something went wrong!</h2>
@@ -22,4 +22,4 @@ const Error = ({ error, retry }: ErrorProps) => {
   );
 };
 
-export default Error;
+export default ErrorPage;

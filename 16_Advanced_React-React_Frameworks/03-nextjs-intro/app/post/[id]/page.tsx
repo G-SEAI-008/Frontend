@@ -1,8 +1,8 @@
-type PostProps = {
-  params: Promise<{ id: string }>;
-};
+// type PostProps = {
+//   params: Promise<{ id: string }>;
+// };
 
-const Post = async ({ params }: PostProps) => {
+const Post = async ({ params }: PageProps<'/post/[id]'>) => {
   const { id } = await params;
 
   return (
