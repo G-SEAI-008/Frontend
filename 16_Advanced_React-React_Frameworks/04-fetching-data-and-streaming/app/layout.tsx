@@ -25,6 +25,9 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       <body className='flex min-h-full flex-col'>
         <nav className='flex gap-3'>
           <Link href='/'>HOME</Link>
+          <Link href='/products'>PRODUCTS</Link>
+          <Link href='/posts'>POSTS</Link>
+          <Link href='/about'>ABOUT</Link>
         </nav>
         <main>{children}</main>
       </body>
