@@ -9,6 +9,8 @@ const PostSchema = z.object({
 
 const PostsSchema = z.array(PostSchema);
 
+type Post = z.infer<typeof PostSchema>;
+
 const getPosts = async () => {
   const res = await fetch('https://jsonplaceholder.typicode.com/posts');
   if (!res.ok) {
@@ -19,4 +21,4 @@ const getPosts = async () => {
   return PostsSchema.parse(data);
 };
 
-export { PostSchema, getPosts };
+export { PostSchema, PostsSchema, type Post, getPosts };

@@ -1,11 +1,8 @@
 'use client';
 
 import { use } from 'react';
-import type z from 'zod';
 
-import type { PostSchema } from '@/app/posts/_lib/posts';
-
-type Post = z.infer<typeof PostSchema>;
+import type { Post } from '@/app/posts/_lib/posts';
 
 type PostListProps = {
   postsPromise: Promise<Post[]>;
