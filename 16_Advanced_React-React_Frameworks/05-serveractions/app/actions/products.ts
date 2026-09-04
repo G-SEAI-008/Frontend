@@ -5,7 +5,7 @@ import { z } from 'zod';
 
 const ProductFormSchema = z.object({
   title: z.string().min(1),
-  price: z.string().nonempty(),
+  price: z.coerce.number().positive(),
 });
 
 const ProductSchema = z.object({
@@ -24,7 +24,7 @@ const addProduct = async (formData: FormData) => {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       title: productForm.title,
-      price: Number(productForm.price),
+      price: productForm.price,
       description: 'test product',
       image: 'something.avif',
       category: 'electronics',
