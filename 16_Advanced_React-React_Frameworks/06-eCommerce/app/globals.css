@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+@plugin 'daisyui';
+
+@layer components {
+  .button {
+    @apply cursor-pointer bg-black px-4 py-2 text-white disabled:cursor-default disabled:opacity-50;
+  }
+
+  .field {
+    @apply border p-2;
+  }
+}
