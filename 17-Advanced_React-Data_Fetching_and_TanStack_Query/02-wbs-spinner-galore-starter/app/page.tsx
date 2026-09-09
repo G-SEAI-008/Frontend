@@ -22,14 +22,10 @@ export default function HomePage() {
       <p>Die einzelnen Schritte, URLs und Hilfestellungen stehen in der README.</p>
       <ul>
         <li>
-          <Link href='/posts' prefetch={false}>
-            100 Posts und ihre Details
-          </Link>
+          <Link href='/posts'>100 Posts und ihre Details</Link>
         </li>
         <li>
-          <Link href='/pokemon' prefetch={false}>
-            150 Pokémon und ihre Details
-          </Link>
+          <Link href='/pokemon'>150 Pokémon und ihre Details</Link>
         </li>
       </ul>
     </section>
