@@ -1,7 +1,8 @@
 import PostList from '../../components/PostList';
 
-// TODO 2: Starte den API-Aufruf und übergib die Promise an PostList.
-// TODO 4: Umschließe die Komponente mit Suspense und einem Loading-Fallback.
+// TODO 2: Lade die Posts mit await in dieser Server Page.
+// Zeige für jeden Post eine PostPreview mit fertigen Daten als Prop.
+// Die Ladeanzeige übernimmt die vorhandene app/loading.tsx.
 export default function Page() {
   return (
     <>

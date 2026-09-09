@@ -1,5 +1,5 @@
-// TODO 3: Ergänze 'use client', eine promise-Prop und use(promise).
-// Den passenden Typ findest du in ../lib/schemas.ts.
-export default function PokemonDetail() {
+// Platzhalter: Titel und Text werden später direkt in der Post-Detail-Page angezeigt.
+// Diese Datei kann danach entfernt werden, sobald kein Import mehr darauf verweist.
+export default function PostDetail() {
   return <p>Hier werden später die geladenen Daten angezeigt.</p>;
 }
