@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function HomePage() {
+const HomePage = () => {
   return (
     <section>
       <p>Next.js · Starter</p>
@@ -8,7 +8,8 @@ export default function HomePage() {
       <p>Lade Daten auf dem Server und zeige während der Wartezeit einen Spinner.</p>
       <ol>
         <li>
-          Schreibe vier Fetch-Funktionen in <code>lib/api.ts</code>.
+          Schreibe die Fetch-Funktionen in <code>app/pokemon/_lib/api.ts</code> und{' '}
+          <code>app/posts/_lib/api.ts</code>.
         </li>
         <li>Starte in den Pokémon-Pages den Aufruf und übergib die Promise an eine Komponente.</li>
         <li>
@@ -36,4 +37,6 @@ export default function HomePage() {
       </ul>
     </section>
   );
-}
+};
+
+export default HomePage;
