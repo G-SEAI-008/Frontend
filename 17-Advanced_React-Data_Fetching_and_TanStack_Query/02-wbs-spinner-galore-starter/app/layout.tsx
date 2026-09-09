@@ -15,12 +15,8 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <header>
           <nav>
             <Link href='/'>WBS Spinner Galore</Link>
-            <Link href='/pokemon' prefetch={false}>
-              Pokémon
-            </Link>
-            <Link href='/posts' prefetch={false}>
-              Posts
-            </Link>
+            <Link href='/pokemon'>Pokémon</Link>
+            <Link href='/posts'>Posts</Link>
           </nav>
         </header>
         <main>{children}</main>
