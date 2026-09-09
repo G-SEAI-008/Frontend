@@ -9,7 +9,7 @@ export const PokemonListSchema = z.object({
 export const PokemonSchema = z.object({
   id: z.number(),
   name: z.string(),
-  sprites: z.object({ front_default: z.string().nullable() }),
+  sprites: z.object({ front_default: z.httpUrl().nullable() }),
 });
 
 export const PostSchema = z.object({
