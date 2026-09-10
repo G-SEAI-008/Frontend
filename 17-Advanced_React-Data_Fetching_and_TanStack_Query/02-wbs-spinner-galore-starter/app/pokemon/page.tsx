@@ -1,12 +1,19 @@
+import { Suspense } from 'react';
+
+import Loading from '@/components/Loading';
+
+import { getPokemonList } from './_lib/api';
 import PokemonList from './PokemonList';
 
-// TODO 2: Starte den API-Aufruf und übergib die Promise an PokemonList.
-// TODO 4: Umschließe die Komponente mit Suspense und einem Loading-Fallback.
 const Page = () => {
+  const promise = getPokemonList(150);
+
   return (
     <>
       <h1>150 Pokémon</h1>
-      <PokemonList />
+      <Suspense fallback={<Loading message='Catching all the pokémon...' />}>
+        <PokemonList promise={promise} />
+      </Suspense>
     </>
   );
 };

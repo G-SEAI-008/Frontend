@@ -1,7 +1,16 @@
-// Platzhalter: Die Posts-Page zeigt später eine PostPreview pro Eintrag.
-// Diese Datei kann danach entfernt werden, sobald kein Import mehr darauf verweist.
-const PostList = () => {
-  return <p>Hier werden später die geladenen Daten angezeigt.</p>;
+import Link from 'next/link';
+
+import type { Post } from './_lib/schemas';
+
+const PostPreview = ({ post }: { post: Post }) => {
+  return (
+    <li className='card'>
+      <Link href={`/posts/${post.id}`}>
+        <span>Post {post.id}</span>
+        <h2>{post.title}</h2>
+      </Link>
+    </li>
+  );
 };
 
-export default PostList;
+export default PostPreview;

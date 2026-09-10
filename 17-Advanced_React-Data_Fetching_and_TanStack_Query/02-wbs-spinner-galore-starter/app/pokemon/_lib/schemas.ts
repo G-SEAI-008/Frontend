@@ -10,7 +10,14 @@ const PokemonListSchema = z.object({
 const PokemonSchema = z.object({
   id: z.number(),
   name: z.string(),
-  sprites: z.object({ front_default: z.httpUrl().nullable() }),
+  sprites: z.object({
+    front_default: z.httpUrl().nullable(),
+    other: z.object({
+      'official-artwork': z.object({
+        front_default: z.httpUrl().nullable(),
+      }),
+    }),
+  }),
 });
 
 // TypeScript übernimmt die Typen aus den Zod-Schemas.

@@ -1,14 +1,17 @@
-import PostDetail from './PostDetail';
+import Link from 'next/link';
 
-// TODO 2: Lade den Post mit await und zeige Titel und Text direkt in dieser Page.
-// Die URL-Parameter bekommst du als params: Promise<{ id: string }>.
-// Mache die Page async und lies die ID mit: const { id } = await params;
-const Page = () => {
+import { getPost } from '../_lib/api';
+
+const Page = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const post = await getPost(id);
+
   return (
-    <>
-      <h1>Ein Post</h1>
-      <PostDetail />
-    </>
+    <article className='detail'>
+      <Link href='/posts'>Zurück zu den Posts</Link>
+      <h1>{post.title}</h1>
+      <p>{post.body}</p>
+    </article>
   );
 };
 
