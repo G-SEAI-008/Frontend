@@ -2,7 +2,6 @@
 import { z } from 'zod';
 
 // Zod prüft die API-Antwort. Wir beschreiben nur die Felder, die wir anzeigen.
-// Passe die Pokémon-Schemas an deine Liste und das gewünschte Detailbild an.
 const PokemonListSchema = z.object({
   results: z.array(z.object({ name: z.string() })),
 });

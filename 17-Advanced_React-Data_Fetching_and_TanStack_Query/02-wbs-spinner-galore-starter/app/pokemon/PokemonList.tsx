@@ -17,7 +17,13 @@ const PokemonList = ({ promise }: { promise: Promise<Pokemon[]> }) => {
           <Link href={`/pokemon/${entry.id}`}>
             <p className='pokemon-name'>{entry.name}</p>
             {entry.sprites.front_default ? (
-              <Image src={entry.sprites.front_default} alt={entry.name} width={96} height={96} />
+              <Image
+                src={entry.sprites.front_default}
+                alt={entry.name}
+                width={96}
+                height={96}
+                loading='eager'
+              />
             ) : (
               <p>Kein Pokémon zu finden.</p>
             )}

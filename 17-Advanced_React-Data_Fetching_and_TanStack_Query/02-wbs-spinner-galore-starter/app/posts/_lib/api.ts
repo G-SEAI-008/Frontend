@@ -4,9 +4,6 @@ import { notFound } from 'next/navigation';
 
 import { PostSchema, PostsSchema } from './schemas';
 
-// Jede Funktion: fetch → response.ok prüfen → response.json() → Schema.parse(data).
-// Die Schemas findest du in schemas.ts.
-
 const getPosts = async () => {
   const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
     cache: 'no-store',

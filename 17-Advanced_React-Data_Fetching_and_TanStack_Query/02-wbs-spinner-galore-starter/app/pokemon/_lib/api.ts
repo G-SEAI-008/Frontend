@@ -1,15 +1,9 @@
-// oxlint-disable require-await
 'use server';
 
 import { notFound } from 'next/navigation';
 
 import type { Pokemon } from './schemas';
 import { PokemonSchema } from './schemas';
-
-// TODO 1: Erstelle getPokemon(id) und getPokemonList().
-// getPokemon: fetch → response.ok prüfen → response.json() → Schema.parse(data).
-// getPokemonList: Lade mehrere Pokémon mit getPokemon().
-// Die Schemas findest du in schemas.ts.
 
 const getPokemon = async (id: string) => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${encodeURIComponent(id)}/`, {
@@ -25,7 +19,8 @@ const getPokemon = async (id: string) => {
   return PokemonSchema.parse(data);
 };
 
-const getPokemonList = async (count = 10) => {
+// oxlint-disable-next-line require-await
+const getPokemonList = async (count = 150) => {
   const promises: Promise<Pokemon>[] = [];
 
   for (let id = 1; id <= count; id++) {
@@ -34,8 +29,7 @@ const getPokemonList = async (count = 10) => {
 
   return Promise.all(promises);
 };
-
-// const getPokemonList = async (count = 10) => {
+// const getPokemonList = async (count = 150) => {
 //   return Promise.all(Array.from({ length: count }, (_, index) => getPokemon(String(index + 1))));
 // };
 
