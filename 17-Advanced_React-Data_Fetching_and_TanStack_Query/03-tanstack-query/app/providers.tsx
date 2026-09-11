@@ -12,8 +12,8 @@ const Providers = ({ children }: { children: ReactNode }) => {
       new QueryClient({
         defaultOptions: {
           queries: {
-            staleTime: 6000,
-            gcTime: 18_000,
+            staleTime: 60_000,
+            gcTime: 5 * 60_000,
             refetchOnWindowFocus: false,
           },
         },
