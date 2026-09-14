@@ -1,9 +1,11 @@
-import { VATRates } from './vatRates';
 import type { Country } from './types';
+import { VATRates } from './vatRates';
 
-export const calculateTotal = (net: number, country: Country): number => {
-  if (country !== 'UK') {
-    return net * (1 + VATRates[country]) * (1 + VATRates[country]);
-  }
+const calculateTotal = (net: number, country: Country): number => {
   return net * (1 + VATRates[country]);
 };
+
+export { calculateTotal };
+
+// UK: 100 x 1.20 = 120
+// FR: 100 x 1.20 x 1.20 = 144

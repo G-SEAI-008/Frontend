@@ -11,6 +11,11 @@ describe('format Playlist Name', () => {
   // - 'title': "My Awesome Playlist"
   // - 'sentence': "My awesome playlist"
   // - 'upper': "MY AWESOME PLAYLIST"
+  test('schreibt den Playlist-Namen in Großbuchstaben', () => {
+    const result = formatPlaylistName('meine musik', 'upper');
+
+    expect(result).toBe('MEINE MUSIK');
+  });
   // - 'lower': "my awesome playlist"
   // Test special character removal
   // - Should remove special characters: "my@playlist!" -> "my playlist"
