@@ -25,7 +25,7 @@ npm run test -- --run src/utils/getPost.test.ts
 
 | Aufruf                                          | Prüft                                     |
 | ----------------------------------------------- | ----------------------------------------- |
-| `.toBe(x)`                                      | Gleichheit mit `Object.is`                |
+| `.toBe(x)`                                      | Gleichheit der Werte (===)                |
 | `.toEqual(x)` / `.toStrictEqual(x)`             | Objektinhalt / zusätzlich genaue Struktur |
 | `.toBeCloseTo(x)`                               | Gleitkommazahl                            |
 | `.toBeTruthy()` / `.toBeFalsy()`                | Truthy / falsy                            |
