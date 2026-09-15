@@ -1,5 +1,5 @@
 // oxlint-disable vitest/prefer-expect-assertions
-import { describe, expect, test, vi, beforeEach, afterEach } from 'vitest';
+import { afterEach, beforeEach, describe, expect, test, vi } from 'vitest';
 import { ZodError } from 'zod';
 
 import { getPost } from './getPost';
@@ -7,16 +7,16 @@ import { getPost } from './getPost';
 const mockPost = { id: 1, title: 'Post 1', body: 'Body 1' };
 
 describe('get Post', () => {
-  // Hooks zeigen hier ausdrücklich das Vorbereiten und aufraumen der Testumgebung
   beforeEach(() => {
+    // Jeder Test bekommt einen neuen Mock und eine frische Antwort.
     vi.stubGlobal('fetch', vi.fn<typeof fetch>().mockResolvedValue(Response.json(mockPost)));
-    const consoleSpy = vi.spyOn(console, 'log');
-    // const consoleSpy = vi.spyOn(console, 'log').mockImplementation(() => {});
+    vi.spyOn(console, 'log');
+    // vi.spyOn(console, 'log').mockImplementation(() => {});
   });
 
   afterEach(() => {
     vi.unstubAllGlobals(); // Stellt das ursprüngliche fetch wieder her.
-    vi.restoreAllMocks(); //  Stellt die mit spyOn ersetzten Metohden wieder her.
+    vi.restoreAllMocks(); // Stellt die mit spyOn ersetzten Methoden wieder her.
   });
 
   test('liefert den geladenen Beitrag', async () => {
@@ -26,12 +26,13 @@ describe('get Post', () => {
     // expect(result.title).toBe('Post 1');
   });
 
-  test('ruft die richtige URL', async () => {
+  test('ruft die richtige URL auf', async () => {
     await getPost(1);
-    expect(fetch).toHaveBeenCalledWith('https://jsonplaceholder.typicode.com/posts/1');
+
+    expect(fetch).toHaveBeenCalledExactlyOnceWith('https://jsonplaceholder.typicode.com/posts/1');
   });
 
-  test('lehnt eine erfolgreiche HTTP-Antwort ab', async () => {
+  test('lehnt eine erfolglose HTTP-Antwort ab', async () => {
     vi.mocked(fetch).mockResolvedValueOnce(
       new Response(null, { status: 404, statusText: 'Not Found' }),
     );
