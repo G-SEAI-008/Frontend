@@ -18,7 +18,7 @@ const NavBar = () => {
           className='select select-success'
           onChange={(e) => changeTheme(e.target.value)}
         >
-          <option disabled={true}>Pick a color</option>
+          <option disabled>Pick a color</option>
           <option value='halloween'>Halloween</option>
           <option value='cyberpunk'>Cyberpunk</option>
           <option value='dim'>Dim</option>

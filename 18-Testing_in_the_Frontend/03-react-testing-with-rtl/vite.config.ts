@@ -1,7 +1,7 @@
 import babel from '@rolldown/plugin-babel';
 import tailwindcss from '@tailwindcss/vite';
 import react, { reactCompilerPreset } from '@vitejs/plugin-react';
-import { defineConfig } from 'vite';
+import { defineConfig } from 'vitest/config';
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -9,4 +9,9 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   plugins: [react(), tailwindcss(), babel({ presets: [reactCompilerPreset()] })],
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: ['./src/vitest.setup.ts'],
+  },
 });
