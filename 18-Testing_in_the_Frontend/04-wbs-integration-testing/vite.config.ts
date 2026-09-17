@@ -20,6 +20,15 @@ export default defineConfig({
           include: ['src/**/*.unit.test.ts?(x)'],
         },
       },
+      {
+        test: {
+          globals: true,
+          name: 'Integration_Tests',
+          environment: 'jsdom',
+          setupFiles: ['src/__tests__/integration/setup.integration.ts'],
+          include: ['src/__tests__/integration/**/*.int.test.ts?(x)'],
+        },
+      },
     ],
   },
 });
