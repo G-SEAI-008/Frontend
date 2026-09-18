@@ -1,0 +1,49 @@
+{
+  "name": "react-testing-with-rtl",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint --type-aware src vite.config.ts",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "lint:oxlint": "oxlint",
+    "lint:types": "oxlint --type-aware --type-check",
+    "analyze": "fallow",
+    "lint:global": "oxlint -c ~/.oxlintrc.json --type-aware src vite.config.ts"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "tailwindcss": "^4.3.3",
+    "zod": "^4.6.5"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@oxlint/plugins": "1.83.0",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.1",
+    "@testing-library/react": "^16.3.3",
+    "@types/node": "^26.5.1",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.1",
+    "daisyui": "^5.7.37",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.6",
+    "fallow": "3.25.0",
+    "globals": "^17.12.0",
+    "jsdom": "^30.0.1",
+    "oxlint": "1.83.0",
+    "oxlint-tsgolint": "7.0.2001",
+    "typescript": "~7.0.2",
+    "typescript-eslint": "^8.70.0",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.0"
+  }
+}
